@@ -1,7 +1,10 @@
-import 'package:dynamic_home/src/models/margin.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
+
+import 'models.dart';
+
+part 'action_props.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -27,6 +30,9 @@ class ActionProps extends Equatable {
     return ActionProps(
         alignment: alignment ?? this.alignment, margin: margin ?? this.margin);
   }
+
+  factory ActionProps.fromJson(JsonMap json) => _$ActionPropsFromJson(json);
+  JsonMap toJson() => _$ActionPropsToJson(this);
 
   @override
   List<Object?> get props => [alignment, padding, position, margin];

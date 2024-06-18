@@ -2,6 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
+import 'models.dart';
+
+part 'margin.g.dart';
+
 @immutable
 @JsonSerializable()
 class Margin extends Equatable {
@@ -29,6 +33,9 @@ class Margin extends Equatable {
         left: left ?? this.left,
         right: right ?? this.right,
       );
+
+  factory Margin.fromJson(JsonMap json) => _$MarginFromJson(json);
+  JsonMap toJson() => _$MarginToJson(this);
 
   @override
   List<Object?> get props => [top, left, right, bottom];

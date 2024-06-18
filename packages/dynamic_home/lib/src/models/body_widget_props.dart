@@ -2,7 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'margin.dart';
+import 'models.dart';
+
+part 'body_widget_props.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -35,6 +37,10 @@ class BodyWidgetProps extends Equatable {
         position: position ?? this.position,
         margin: margin ?? this.margin,
       );
+
+  factory BodyWidgetProps.fromJson(JsonMap json) =>
+      _$BodyWidgetPropsFromJson(json);
+  JsonMap toJson() => _$BodyWidgetPropsToJson(this);
 
   @override
   List<Object?> get props => [height, width, padding, position, margin];

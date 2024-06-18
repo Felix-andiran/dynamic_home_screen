@@ -2,11 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'body_widget_props.dart';
-import 'body_widget_user_perference.dart';
-import 'favorite.dart';
-import 'place_holder.dart';
-import 'validation.dart';
+import 'models.dart';
+
+part 'body_widget.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -104,6 +102,10 @@ class BodyWidget extends Equatable {
         taskFlex: taskFlex ?? this.taskFlex,
         task: task ?? this.task,
       );
+
+  factory BodyWidget.fromJson(JsonMap json) =>
+      _$BodyWidgetFromJson(json);
+  JsonMap toJson() => _$BodyWidgetToJson(this);
 
   @override
   List<Object?> get props => [

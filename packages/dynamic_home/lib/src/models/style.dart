@@ -2,6 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
+import 'models.dart';
+
+part 'style.g.dart';
+
 @immutable
 @JsonSerializable()
 class Style extends Equatable {
@@ -26,6 +30,9 @@ class Style extends Equatable {
         color: color ?? this.color,
       );
 
+factory Style.fromJson(JsonMap json) => _$StyleFromJson(json);
+  JsonMap toJson() => _$StyleToJson(this);
+  
   @override
   List<Object?> get props => [fontSize, fontWeight, color];
 }

@@ -1,7 +1,10 @@
-
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
+
+import 'models.dart';
+
+part 'home.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -28,6 +31,9 @@ class Home extends Equatable {
         path: page ?? this.path);
   }
 
+  factory Home.fromJson(JsonMap json) => _$HomeFromJson(json);
+  JsonMap toJson() => _$HomeToJson(this);
+  
   @override
   List<Object?> get props => [fieldValue, page, path];
 }

@@ -2,10 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'body_widget_props.dart';
-import 'menu_item_props.dart';
-import 'menu_list.dart';
-import 'menu_user_preference.dart';
+import 'models.dart';
+
+part 'menu.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -52,6 +51,9 @@ class Menu extends Equatable {
         menuItemProps: menuItemProps ?? this.menuItemProps,
         menuList: menuList ?? this.menuList,
       );
+
+  factory Menu.fromJson(JsonMap json) => _$MenuFromJson(json);
+  JsonMap toJson() => _$MenuToJson(this);
 
   @override
   List<Object?> get props => [

@@ -2,9 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'icon_theme.dart';
-import 'item.dart';
-import 'style.dart';
+import 'models.dart';
+
+part 'body_navigation_props.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -77,6 +77,10 @@ class BottomNavigationProps extends Equatable {
         unselectedItemColor: unselectedItemColor ?? this.unselectedItemColor,
         unselectedLabelStyle: unselectedLabelStyle ?? this.unselectedLabelStyle,
       );
+
+  factory BottomNavigationProps.fromJson(JsonMap json) =>
+      _$BottomNavigationPropsFromJson(json);
+  JsonMap toJson() => _$BottomNavigationPropsToJson(this);
 
   @override
   List<Object?> get props => [

@@ -1,8 +1,10 @@
-import 'package:dynamic_home/src/models/action_props.dart';
-import 'package:dynamic_home/src/models/icon.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
+
+import 'models.dart';
+
+part 'action.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -39,6 +41,9 @@ class Action extends Equatable {
         path: path ?? this.path,
         actionProps: actionProps ?? this.actionProps);
   }
+
+  factory Action.fromJson(JsonMap json) => _$ActionFromJson(json);
+  JsonMap toJson() => _$ActionToJson(this);
 
   @override
   List<Object?> get props => [type, fieldType, actionProps, name, icon, path];

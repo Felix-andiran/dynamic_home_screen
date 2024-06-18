@@ -2,7 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'body_navigation_props.dart';
+import 'models.dart';
+
+part 'bottom_navigation.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -25,6 +27,9 @@ class BottomNavigation extends Equatable {
         bottomNavigationProps:
             bottomNavigationProps ?? this.bottomNavigationProps,
       );
+      
+  factory BottomNavigation.fromJson(JsonMap json) => _$BottomNavigationFromJson(json);
+  JsonMap toJson() => _$BottomNavigationToJson(this);
 
   @override
   List<Object?> get props => [type, bottomNavigationProps];

@@ -1,10 +1,10 @@
-import 'package:dynamic_home/src/models/icon_theme.dart';
-import 'package:dynamic_home/src/models/style.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'place_holder.dart';
+import 'models.dart';
+
+part 'appbar_props.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -45,6 +45,10 @@ class AppbarWidgetProps extends Equatable {
         titleTextStyle: titleTextStyle ?? this.titleTextStyle,
         iconTheme: iconTheme ?? this.iconTheme,
       );
+
+  factory AppbarWidgetProps.fromJson(JsonMap json) => _$AppbarWidgetPropsFromJson(json);
+  JsonMap toJson() => _$AppbarWidgetPropsToJson(this);
+  
   @override
   List<Object?> get props => [
         backgroundColor,

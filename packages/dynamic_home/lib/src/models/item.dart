@@ -2,7 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'icon.dart';
+import 'models.dart';
+
+part 'item.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -43,6 +45,9 @@ class Item extends Equatable {
         backgroundColor: backgroundColor ?? this.backgroundColor,
         path: path ?? this.path,
       );
+
+  factory Item.fromJson(JsonMap json) => _$ItemFromJson(json);
+  JsonMap toJson() => _$ItemToJson(this);
 
   @override
   List<Object?> get props =>

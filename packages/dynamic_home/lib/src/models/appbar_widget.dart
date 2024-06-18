@@ -2,8 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'action.dart';
-import 'appbar_props.dart';
+import 'models.dart';
+
+part 'appbar_widget.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -33,7 +34,9 @@ class AppbarWidget extends Equatable {
         leading: leading ?? this.leading,
         actions: actions ?? this.actions,
       );
-
+  factory AppbarWidget.fromJson(JsonMap json) =>
+      _$AppbarWidgetFromJson(json);
+  JsonMap toJson() => _$AppbarWidgetToJson(this);
   @override
   List<Object?> get props => [type, actionProps, leading, actions];
 }

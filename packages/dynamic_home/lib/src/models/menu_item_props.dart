@@ -2,8 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'margin.dart';
-import 'size.dart';
+import 'models.dart';
+
+part 'menu_item_props.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -24,6 +25,9 @@ class MenuItemPropsClass extends Equatable {
         size: size ?? this.size,
         margin: margin ?? this.margin,
       );
+
+  factory MenuItemPropsClass.fromJson(JsonMap json) => _$MenuItemPropsClassFromJson(json);
+  JsonMap toJson() => _$MenuItemPropsClassToJson(this);
 
   @override
   List<Object?> get props => [size, margin];

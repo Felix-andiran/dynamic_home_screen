@@ -2,6 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
+import 'models.dart';
+
+part 'body_widget_user_perference.g.dart';
+
 @immutable
 @JsonSerializable()
 class BodyWidgetUserPreference extends Equatable {
@@ -28,6 +32,10 @@ class BodyWidgetUserPreference extends Equatable {
         sortBy: sortBy ?? this.sortBy,
       );
 
+  factory BodyWidgetUserPreference.fromJson(JsonMap json) =>
+      _$BodyWidgetUserPreferenceFromJson(json);
+  JsonMap toJson() => _$BodyWidgetUserPreferenceToJson(this);
+  
   @override
   List<Object?> get props => [gridView, filter, sortBy];
 }

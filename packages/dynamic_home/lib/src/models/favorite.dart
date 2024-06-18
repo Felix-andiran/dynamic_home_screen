@@ -1,7 +1,10 @@
-import 'package:dynamic_home/src/models/menu_item_props.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
+
+import 'models.dart';
+
+part 'favorite.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -29,6 +32,10 @@ class Favorite extends Equatable {
         fieldValue: fieldValue ?? this.fieldValue,
         menuItemProps: menuItemProps ?? this.menuItemProps,
       );
+      
+  factory Favorite.fromJson(JsonMap json) =>
+      _$FavoriteFromJson(json);
+  JsonMap toJson() => _$FavoriteToJson(this);
 
   @override
   List<Object?> get props => [fieldType, fieldValue, menuItemProps];

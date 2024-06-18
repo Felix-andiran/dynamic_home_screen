@@ -2,12 +2,14 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'icon.dart';
+import 'models.dart';
+
+part 'menu_list.g.dart';
 
 @immutable
 @JsonSerializable()
 class MenuList extends Equatable {
-  final Type? type;
+  final String? type;
   final String? labelName;
   final Icon? icon;
   final String? bgColor;
@@ -26,7 +28,7 @@ class MenuList extends Equatable {
   });
 
   MenuList copyWith({
-    Type? type,
+    String? type,
     String? labelName,
     Icon? icon,
     String? bgColor,
@@ -43,6 +45,9 @@ class MenuList extends Equatable {
         favorites: favorites ?? this.favorites,
         index: index ?? this.index,
       );
+
+  factory MenuList.fromJson(JsonMap json) => _$MenuListFromJson(json);
+  JsonMap toJson() => _$MenuListToJson(this);
 
   @override
   List<Object?> get props =>

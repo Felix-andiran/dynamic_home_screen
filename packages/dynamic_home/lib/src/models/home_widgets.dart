@@ -2,10 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
-import 'appbar_widget.dart';
-import 'body_widget.dart';
-import 'bottom_navigation.dart';
-import 'menu.dart';
+import 'models.dart';
+
+part 'home_widgets.g.dart';
 
 @immutable
 @JsonSerializable()
@@ -42,6 +41,9 @@ class HomeWidgets extends Equatable {
         bottomNavigation: bottomNavigation ?? this.bottomNavigation,
         menu: menu ?? this.menu,
       );
+
+  factory HomeWidgets.fromJson(JsonMap json) => _$HomeWidgetsFromJson(json);
+  JsonMap toJson() => _$HomeWidgetsToJson(this);
 
   @override
   List<Object?> get props =>
