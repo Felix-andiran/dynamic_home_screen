@@ -19,8 +19,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       title: Text(title),
       actions: renderAppbarActions(appBarWidget.actions),
-      backgroundColor: Colors.white,
-      elevation: 0,
+      backgroundColor:
+          Color(int.parse(appBarWidget.actionProps!.backgroundColor!)),
+      elevation: appBarWidget.actionProps!.elevation!.toDouble(),
     );
   }
 }

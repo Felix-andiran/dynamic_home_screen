@@ -1,3 +1,4 @@
+import 'package:dynamic_home/dynamic_home.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -59,6 +60,13 @@ class CustomCarouselSliderState extends State<CustomCarouselSlider> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 5),
+        Text(
+          "Functionalities",
+          textAlign: TextAlign.start,
+          style: Styles.heading_1,
+        ),
+        const SizedBox(height: 0),
         CarouselSlider.builder(
           itemCount: _pages.length,
           itemBuilder: (BuildContext context, int pageIndex, int index) {
