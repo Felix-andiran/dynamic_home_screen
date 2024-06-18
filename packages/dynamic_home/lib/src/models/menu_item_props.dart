@@ -9,7 +9,7 @@ part 'menu_item_props.g.dart';
 @immutable
 @JsonSerializable()
 class MenuItemPropsClass extends Equatable {
-  final Size? size;
+  final SizeClass? size;
   final Margin? margin;
 
   const MenuItemPropsClass({
@@ -18,7 +18,7 @@ class MenuItemPropsClass extends Equatable {
   });
 
   MenuItemPropsClass copyWith({
-    Size? size,
+    SizeClass? size,
     Margin? margin,
   }) =>
       MenuItemPropsClass(

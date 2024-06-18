@@ -8,26 +8,26 @@ part 'size.g.dart';
 
 @immutable
 @JsonSerializable()
-class Size extends Equatable {
+class SizeClass extends Equatable {
   final Grid? grid;
   final Grid? list;
 
-  const Size({
+  const SizeClass({
     this.grid,
     this.list,
   });
 
-  Size copyWith({
+  SizeClass copyWith({
     Grid? grid,
     Grid? list,
   }) =>
-      Size(
+      SizeClass(
         grid: grid ?? this.grid,
         list: list ?? this.list,
       );
 
-  factory Size.fromJson(JsonMap json) => _$SizeFromJson(json);
-  JsonMap toJson() => _$SizeToJson(this);
+  factory SizeClass.fromJson(JsonMap json) => _$SizeClassFromJson(json);
+  JsonMap toJson() => _$SizeClassToJson(this);
 
   @override
   List<Object?> get props => [grid, list];

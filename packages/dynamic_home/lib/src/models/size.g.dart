@@ -6,7 +6,7 @@ part of 'size.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Size _$SizeFromJson(Map<String, dynamic> json) => Size(
+SizeClass _$SizeClassFromJson(Map<String, dynamic> json) => SizeClass(
       grid: json['grid'] == null
           ? null
           : Grid.fromJson(json['grid'] as Map<String, dynamic>),
@@ -15,7 +15,7 @@ Size _$SizeFromJson(Map<String, dynamic> json) => Size(
           : Grid.fromJson(json['list'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$SizeToJson(Size instance) => <String, dynamic>{
+Map<String, dynamic> _$SizeClassToJson(SizeClass instance) => <String, dynamic>{
       'grid': instance.grid,
       'list': instance.list,
     };

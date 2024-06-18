@@ -8,30 +8,30 @@ part 'style.g.dart';
 
 @immutable
 @JsonSerializable()
-class Style extends Equatable {
+class StyleClass extends Equatable {
   final int? fontSize;
   final String? fontWeight;
   final String? color;
 
-  const Style({
+  const StyleClass({
     this.fontSize,
     this.fontWeight,
     this.color,
   });
 
-  Style copyWith({
+  StyleClass copyWith({
     int? fontSize,
     String? fontWeight,
     String? color,
   }) =>
-      Style(
+      StyleClass(
         fontSize: fontSize ?? this.fontSize,
         fontWeight: fontWeight ?? this.fontWeight,
         color: color ?? this.color,
       );
 
-factory Style.fromJson(JsonMap json) => _$StyleFromJson(json);
-  JsonMap toJson() => _$StyleToJson(this);
+factory StyleClass.fromJson(JsonMap json) => _$StyleClassFromJson(json);
+  JsonMap toJson() => _$StyleClassToJson(this);
   
   @override
   List<Object?> get props => [fontSize, fontWeight, color];

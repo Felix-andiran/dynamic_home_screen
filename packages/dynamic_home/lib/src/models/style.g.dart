@@ -6,13 +6,14 @@ part of 'style.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Style _$StyleFromJson(Map<String, dynamic> json) => Style(
+StyleClass _$StyleClassFromJson(Map<String, dynamic> json) => StyleClass(
       fontSize: (json['fontSize'] as num?)?.toInt(),
       fontWeight: json['fontWeight'] as String?,
       color: json['color'] as String?,
     );
 
-Map<String, dynamic> _$StyleToJson(Style instance) => <String, dynamic>{
+Map<String, dynamic> _$StyleClassToJson(StyleClass instance) =>
+    <String, dynamic>{
       'fontSize': instance.fontSize,
       'fontWeight': instance.fontWeight,
       'color': instance.color,

@@ -12,10 +12,10 @@ AppbarWidget _$AppbarWidgetFromJson(Map<String, dynamic> json) => AppbarWidget(
           ? null
           : AppbarWidgetProps.fromJson(json['props'] as Map<String, dynamic>),
       leading: (json['leading'] as List<dynamic>?)
-          ?.map((e) => Action.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ActionClass.fromJson(e as Map<String, dynamic>))
           .toList(),
       actions: (json['actions'] as List<dynamic>?)
-          ?.map((e) => Action.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => ActionClass.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

@@ -1,3 +1,4 @@
+import 'package:dynamic_home/dynamic_home.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
@@ -8,27 +9,27 @@ part 'icon.g.dart';
 
 @immutable
 @JsonSerializable()
-class Icon extends Equatable {
+class IconClas extends Equatable {
   final String? package;
   @JsonKey(name: 'icon_name')
   final String? iconName;
 
-  const Icon({
+  const IconClas({
     this.package,
     this.iconName,
   });
 
-  Icon copyWith({
+  IconClas copyWith({
     String? package,
     String? iconName,
   }) =>
-      Icon(
+      IconClas(
         package: package ?? this.package,
         iconName: iconName ?? this.iconName,
       );
 
-  factory Icon.fromJson(JsonMap json) => _$IconFromJson(json);
-  JsonMap toJson() => _$IconToJson(this);
+  factory IconClas.fromJson(JsonMap json) => _$IconClasFromJson(json);
+  JsonMap toJson() => _$IconClasToJson(this);
 
   @override
   List<Object?> get props => [package, iconName];

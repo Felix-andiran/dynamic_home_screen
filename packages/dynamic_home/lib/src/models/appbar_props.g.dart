@@ -17,7 +17,7 @@ AppbarWidgetProps _$AppbarWidgetPropsFromJson(Map<String, dynamic> json) =>
       titleSpacing: (json['titleSpacing'] as num?)?.toInt(),
       titleTextStyle: json['titleTextStyle'] == null
           ? null
-          : Style.fromJson(json['titleTextStyle'] as Map<String, dynamic>),
+          : StyleClass.fromJson(json['titleTextStyle'] as Map<String, dynamic>),
       iconTheme: json['iconTheme'] == null
           ? null
           : IconTheme.fromJson(json['iconTheme'] as Map<String, dynamic>),

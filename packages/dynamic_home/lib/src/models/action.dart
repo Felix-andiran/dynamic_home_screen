@@ -8,16 +8,17 @@ part 'action.g.dart';
 
 @immutable
 @JsonSerializable()
-class Action extends Equatable {
+class ActionClass extends Equatable {
   final String? type;
+  @JsonKey(name: 'field_type')
   final String? fieldType;
   @JsonKey(name: 'props')
   final ActionProps? actionProps;
   final String? name;
-  final Icon? icon;
+  final IconClas? icon;
   final String? path;
 
-  const Action({
+  const ActionClass({
     this.type,
     this.fieldType,
     this.actionProps,
@@ -26,15 +27,15 @@ class Action extends Equatable {
     this.path,
   });
 
-  Action copyWith({
+  ActionClass copyWith({
     String? type,
     String? fieldType,
     ActionProps? actionProps,
     String? name,
-    Icon? icon,
+    IconClas? icon,
     String? path,
   }) {
-    return Action(
+    return ActionClass(
         fieldType: fieldType ?? this.fieldType,
         icon: icon ?? this.icon,
         name: name ?? this.name,
@@ -42,8 +43,8 @@ class Action extends Equatable {
         actionProps: actionProps ?? this.actionProps);
   }
 
-  factory Action.fromJson(JsonMap json) => _$ActionFromJson(json);
-  JsonMap toJson() => _$ActionToJson(this);
+  factory ActionClass.fromJson(JsonMap json) => _$ActionClassFromJson(json);
+  JsonMap toJson() => _$ActionClassToJson(this);
 
   @override
   List<Object?> get props => [type, fieldType, actionProps, name, icon, path];

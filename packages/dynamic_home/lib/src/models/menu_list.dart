@@ -11,7 +11,7 @@ part 'menu_list.g.dart';
 class MenuList extends Equatable {
   final String? type;
   final String? labelName;
-  final Icon? icon;
+  final IconClas? icon;
   final String? bgColor;
   final String? path;
   final bool? favorites;
@@ -30,7 +30,7 @@ class MenuList extends Equatable {
   MenuList copyWith({
     String? type,
     String? labelName,
-    Icon? icon,
+    IconClas? icon,
     String? bgColor,
     String? path,
     bool? favorites,

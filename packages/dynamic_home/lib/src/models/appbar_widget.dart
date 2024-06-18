@@ -12,8 +12,8 @@ class AppbarWidget extends Equatable {
   final String? type;
   @JsonKey(name: 'props')
   final AppbarWidgetProps? actionProps;
-  final List<Action>? leading;
-  final List<Action>? actions;
+  final List<ActionClass>? leading;
+  final List<ActionClass>? actions;
 
   const AppbarWidget({
     this.type,
@@ -25,8 +25,8 @@ class AppbarWidget extends Equatable {
   AppbarWidget copyWith({
     String? type,
     AppbarWidgetProps? actionProps,
-    List<Action>? leading,
-    List<Action>? actions,
+    List<ActionClass>? leading,
+    List<ActionClass>? actions,
   }) =>
       AppbarWidget(
         type: type ?? this.type,

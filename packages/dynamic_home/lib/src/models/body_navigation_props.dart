@@ -17,13 +17,13 @@ class BottomNavigationProps extends Equatable {
   final int? selectedFontSize;
   final IconTheme? selectedIconTheme;
   final String? selectedItemColor;
-  final Style? selectedLabelStyle;
+  final StyleClass? selectedLabelStyle;
   final bool? showSelectedLabels;
   final bool? showUnselectedLabels;
   final int? unselectedFontSize;
   final IconTheme? unselectedIconTheme;
   final String? unselectedItemColor;
-  final Style? unselectedLabelStyle;
+  final StyleClass? unselectedLabelStyle;
 
   const BottomNavigationProps({
     this.backgroundColor,
@@ -52,13 +52,13 @@ class BottomNavigationProps extends Equatable {
     int? selectedFontSize,
     IconTheme? selectedIconTheme,
     String? selectedItemColor,
-    Style? selectedLabelStyle,
+    StyleClass? selectedLabelStyle,
     bool? showSelectedLabels,
     bool? showUnselectedLabels,
     int? unselectedFontSize,
     IconTheme? unselectedIconTheme,
     String? unselectedItemColor,
-    Style? unselectedLabelStyle,
+    StyleClass? unselectedLabelStyle,
   }) =>
       BottomNavigationProps(
         backgroundColor: backgroundColor ?? this.backgroundColor,

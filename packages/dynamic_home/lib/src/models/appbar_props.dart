@@ -14,7 +14,7 @@ class AppbarWidgetProps extends Equatable {
   final int? elevation;
   final bool? centerTitle;
   final int? titleSpacing;
-  final Style? titleTextStyle;
+  final StyleClass? titleTextStyle;
   final IconTheme? iconTheme;
 
   const AppbarWidgetProps({
@@ -33,7 +33,7 @@ class AppbarWidgetProps extends Equatable {
     int? elevation,
     bool? centerTitle,
     int? titleSpacing,
-    Style? titleTextStyle,
+    StyleClass? titleTextStyle,
     IconTheme? iconTheme,
   }) =>
       AppbarWidgetProps(

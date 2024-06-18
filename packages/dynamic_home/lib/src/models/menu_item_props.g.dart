@@ -10,7 +10,7 @@ MenuItemPropsClass _$MenuItemPropsClassFromJson(Map<String, dynamic> json) =>
     MenuItemPropsClass(
       size: json['size'] == null
           ? null
-          : Size.fromJson(json['size'] as Map<String, dynamic>),
+          : SizeClass.fromJson(json['size'] as Map<String, dynamic>),
       margin: json['margin'] == null
           ? null
           : Margin.fromJson(json['margin'] as Map<String, dynamic>),

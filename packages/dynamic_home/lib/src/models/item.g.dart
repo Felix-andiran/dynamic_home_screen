@@ -10,7 +10,7 @@ Item _$ItemFromJson(Map<String, dynamic> json) => Item(
       type: json['type'] as String?,
       icon: json['icon'] == null
           ? null
-          : Icon.fromJson(json['icon'] as Map<String, dynamic>),
+          : IconClas.fromJson(json['icon'] as Map<String, dynamic>),
       label: json['label'] as String?,
       tooltip: json['tooltip'] as String?,
       activeIcon: json['activeIcon'],

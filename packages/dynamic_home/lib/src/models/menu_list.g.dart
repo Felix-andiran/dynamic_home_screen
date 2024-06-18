@@ -11,7 +11,7 @@ MenuList _$MenuListFromJson(Map<String, dynamic> json) => MenuList(
       labelName: json['labelName'] as String?,
       icon: json['icon'] == null
           ? null
-          : Icon.fromJson(json['icon'] as Map<String, dynamic>),
+          : IconClas.fromJson(json['icon'] as Map<String, dynamic>),
       bgColor: json['bgColor'] as String?,
       path: json['path'] as String?,
       favorites: json['favorites'] as bool?,

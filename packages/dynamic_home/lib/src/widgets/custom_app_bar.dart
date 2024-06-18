@@ -1,38 +1,72 @@
+import 'package:dynamic_home/dynamic_home.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/utils.dart';
+
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar(
+      {super.key, required this.title, required this.appBarWidget});
   final String title;
+  final AppbarWidget appBarWidget;
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
       title: Text(title),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 16.0),
-          child: IconButton(
-            icon: const Icon(Icons.access_alarms_outlined, color: Colors.grey),
-            onPressed: () {},
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(right: 16.0),
-          child: CircleAvatar(
-            backgroundColor: Colors.grey[300],
-            child: IconButton(
-              icon: const Icon(Icons.person, color: Colors.grey),
-              onPressed: () {},
-            ),
-          ),
-        ),
-      ],
+      actions: renderAppbarActions(appBarWidget.actions),
       backgroundColor: Colors.white,
       elevation: 0,
     );
   }
+}
 
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+List<Widget> renderAppbarActions(List<ActionClass>? actions) {
+  if (actions == null) return [];
+
+  return actions.map((action) {
+    final padding = action.actionProps?.padding;
+    return Padding(
+      padding: EdgeInsets.only(
+        top: padding?.top?.toDouble() ?? 0,
+        bottom: padding?.bottom?.toDouble() ?? 0,
+        left: padding?.left?.toDouble() ?? 0,
+        right: padding?.right?.toDouble() ?? 0,
+      ),
+      child: _buildActionIcon(action),
+    );
+  }).toList();
+}
+
+Widget _buildActionIcon(ActionClass action) {
+  if (kDebugMode) {
+    print("Action Fields${action.fieldType}");
+  }
+  switch (action.fieldType) {
+    case 'circular_avatar':
+      return CircleAvatar(
+        backgroundColor: Colors.grey[300],
+        child: IconButton(
+          icon: Icon(
+            getIcon(action.icon!.iconName!),
+            color: Colors.grey,
+          ),
+          onPressed: () {},
+        ),
+      );
+    case 'icon_button':
+      return IconButton(
+        icon: Icon(
+          getIcon(action.icon!.iconName!),
+          color: Colors.grey,
+        ),
+        onPressed: () {},
+      );
+    default:
+      return Container();
+  }
 }

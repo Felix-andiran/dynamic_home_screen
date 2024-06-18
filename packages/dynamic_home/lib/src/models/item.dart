@@ -10,7 +10,7 @@ part 'item.g.dart';
 @JsonSerializable()
 class Item extends Equatable {
   final String? type;
-  final Icon? icon;
+  final IconClas? icon;
   final String? label;
   final String? tooltip;
   final dynamic activeIcon;
@@ -29,7 +29,7 @@ class Item extends Equatable {
 
   Item copyWith({
     String? type,
-    Icon? icon,
+    IconClas? icon,
     String? label,
     String? tooltip,
     dynamic activeIcon,

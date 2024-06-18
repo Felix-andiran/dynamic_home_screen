@@ -24,7 +24,8 @@ BottomNavigationProps _$BottomNavigationPropsFromJson(
       selectedItemColor: json['selectedItemColor'] as String?,
       selectedLabelStyle: json['selectedLabelStyle'] == null
           ? null
-          : Style.fromJson(json['selectedLabelStyle'] as Map<String, dynamic>),
+          : StyleClass.fromJson(
+              json['selectedLabelStyle'] as Map<String, dynamic>),
       showSelectedLabels: json['showSelectedLabels'] as bool?,
       showUnselectedLabels: json['showUnselectedLabels'] as bool?,
       unselectedFontSize: (json['unselectedFontSize'] as num?)?.toInt(),
@@ -35,7 +36,7 @@ BottomNavigationProps _$BottomNavigationPropsFromJson(
       unselectedItemColor: json['unselectedItemColor'] as String?,
       unselectedLabelStyle: json['unselectedLabelStyle'] == null
           ? null
-          : Style.fromJson(
+          : StyleClass.fromJson(
               json['unselectedLabelStyle'] as Map<String, dynamic>),
     );
 

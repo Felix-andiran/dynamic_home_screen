@@ -69,14 +69,14 @@
             "actions": [
                 {
                     "type": "app_bar_actions",
-                    "field_type": "circular_avatar",
+                    "field_type": "icon_button",
                     "props": {
                         "alignment": "end",
                         "padding": {
-                            "top": 8,
-                            "bottom": 8,
-                            "left": 8,
-                            "right": 8
+                            "top": 0,
+                            "bottom": 0,
+                            "left": 0,
+                            "right": 16
                         },
                         "position": {
                             "top": 0,
@@ -91,10 +91,41 @@
                             "right": 0
                         }
                     },
+                    "name": "Settings",
+                    "icon": {
+                        "package": "font_awesome_flutter",
+                        "icon_name": "settings"
+                    },
+                    "path": "/settings"
+                },
+                {
+                    "type": "app_bar_actions",
+                    "field_type": "circular_avatar",
+                    "props": {
+                        "alignment": "end",
+                        "padding": {
+                            "top": 0,
+                            "bottom": 0,
+                            "left": 0,
+                            "right": 16
+                        },
+                        "position": {
+                            "top": 0,
+                            "bottom": 0,
+                            "left": 0,
+                            "right": 0
+                        },
+                        "margin": {
+                            "top": 0,
+                            "bottom": 0,
+                            "left": 0,
+                            "right": 0
+                        }
+                    },
                     "name": "Profile",
                     "icon": {
                         "package": "font_awesome_flutter",
-                        "icon_name": "user"
+                        "icon_name": "profile"
                     },
                     "path": "/profile"
                 }

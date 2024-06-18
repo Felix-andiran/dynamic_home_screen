@@ -61,9 +61,16 @@ class _DynamicHomeViewState extends State<DynamicHomeView> {
                     radius: 20,
                   ),
                 );
-              } else {
-                return const Center(child: DynamicHomeWidget());
+              } else if (state.status == HomeDataStatus.success) {
+                return Center(
+                    child: DynamicHomeWidget(homePageData: homeData!));
               }
+              return Center(
+                child: Text(
+                  'Try Again',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              );
             } else {
               return Center(
                 child: Text(
