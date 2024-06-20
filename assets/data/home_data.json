@@ -179,7 +179,6 @@
                             "list": {
                                 "height": 50
                             }
-
                         },
                         "padding": {
                             "top": 8,
@@ -270,10 +269,10 @@
                         "type": "bottom_navigation_bar_item",
                         "icon": {
                             "package": "font_awesome_flutter",
-                            "icon_name": "menu"
+                            "icon_name": "help"
                         },
-                        "label": "Menu",
-                        "tooltip": "Menu",
+                        "label": "Help desk",
+                        "tooltip": "Help desk",
                         "activeIcon": null,
                         "backgroundColor": null,
                         "path": null
@@ -282,10 +281,22 @@
                         "type": "bottom_navigation_bar_item",
                         "icon": {
                             "package": "font_awesome_flutter",
-                            "icon_name": "bell"
+                            "icon_name": "learn"
                         },
-                        "label": "Notifications",
-                        "tooltip": "Notifications",
+                        "label": "Learning",
+                        "tooltip": "Learning",
+                        "activeIcon": null,
+                        "backgroundColor": null,
+                        "path": null
+                    },
+                    {
+                        "type": "bottom_navigation_bar_item",
+                        "icon": {
+                            "package": "font_awesome_flutter",
+                            "icon_name": "alert"
+                        },
+                        "label": "Notification",
+                        "tooltip": "Notification",
                         "activeIcon": null,
                         "backgroundColor": null,
                         "path": "/notifications"
@@ -294,10 +305,10 @@
                         "type": "bottom_navigation_bar_item",
                         "icon": {
                             "package": "font_awesome_flutter",
-                            "icon_name": "ellipsis-h"
+                            "icon_name": "menu"
                         },
-                        "label": "More",
-                        "tooltip": "More",
+                        "label": "Menu",
+                        "tooltip": "Menu",
                         "activeIcon": null,
                         "backgroundColor": null,
                         "path": null

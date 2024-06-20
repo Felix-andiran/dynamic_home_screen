@@ -1,5 +1,9 @@
 // import 'package:dynamic_home/src/themes/themes.dart';
+import 'package:dynamic_home/dynamic_home.dart';
+import 'package:dynamic_home/src/utils/utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // class CustomBottomNavigationBar extends StatefulWidget {
 //   const CustomBottomNavigationBar({super.key});
@@ -83,7 +87,11 @@ import 'package:flutter/material.dart';
 // }
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({super.key});
+  const CustomBottomNavigationBar(
+      {super.key, required this.navigation, this.onTap});
+
+  final BottomNavigation navigation;
+  final void Function(int)? onTap;
 
   @override
   State<CustomBottomNavigationBar> createState() =>
@@ -91,17 +99,45 @@ class CustomBottomNavigationBar extends StatefulWidget {
 }
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
-  int _selectedIndex = 0;
+  late int _selectedIndex;
+  late BottomNavigationProps _props;
+
+  @override
+  void initState() {
+    super.initState();
+    _props = widget.navigation.bottomNavigationProps!;
+    _selectedIndex = _props.currentIndex ?? 0;
+  }
 
   void _onItemTapped(int index) {
-    print("tapped");
+    if (kDebugMode) {
+      print("tapped");
+    }
     setState(() {
       _selectedIndex = index;
+      // widget.onTap!(index);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> renderNavigationItem({
+      List<Item>? items,
+      BuildContext? context,
+    }) {
+      if (items == null) return [];
+
+      return items.asMap().entries.map((entry) {
+        int index = entry.key;
+        Item item = entry.value;
+        return _buildNavItem(
+          icon: getIcon(item.icon!.iconName!),
+          label: item.label!,
+          index: index,
+        );
+      }).toList();
+    }
+
     return Container(
       color: Colors.grey[200],
       child: Container(
@@ -123,15 +159,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildNavItem(icon: Icons.home, label: 'Home', index: 0),
-            _buildNavItem(
-                icon: Icons.headset_mic, label: 'Help desk', index: 1),
-            _buildNavItem(icon: Icons.book, label: 'Learning', index: 2),
-            _buildNavItem(
-                icon: Icons.notifications, label: 'Notification', index: 3),
-            _buildNavItem(icon: Icons.menu, label: 'Menu', index: 4),
-          ],
+          children: renderNavigationItem(items: _props.items, context: context),
         ),
       ),
     );
@@ -152,18 +180,21 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
+                FaIcon(
                   icon,
+                  size: isSelected ? 30 : 24,
                   color: Colors.black,
                 ),
                 const SizedBox(height: 2.0),
-                Text(
-                  label,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 10.0,
-                  ),
-                ),
+                isSelected
+                    ? const SizedBox()
+                    : Text(
+                        label,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 10.0,
+                        ),
+                      ),
               ],
             ),
           ),

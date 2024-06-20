@@ -1,6 +1,7 @@
 import 'package:dynamic_home/dynamic_home.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../utils/utils.dart';
 
@@ -52,7 +53,7 @@ Widget _buildActionIcon(ActionClass action) {
       return CircleAvatar(
         backgroundColor: Colors.grey[300],
         child: IconButton(
-          icon: Icon(
+          icon: FaIcon(
             getIcon(action.icon!.iconName!),
             color: Colors.grey,
           ),

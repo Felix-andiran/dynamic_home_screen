@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 IconData getIcon(String input) {
   switch (input) {
@@ -6,8 +7,14 @@ IconData getIcon(String input) {
       return Icons.home;
     case 'profile':
       return Icons.person;
+    case 'help':
+      return Icons.headset_mic;
+    case 'learn':
+      return FontAwesomeIcons.book;
+    case 'alert':
+      return Icons.notifications;
     case 'menu':
-      return Icons.home;
+      return Icons.menu;
     case 'add':
       return Icons.add;
     case 'settings':

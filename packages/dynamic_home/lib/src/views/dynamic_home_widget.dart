@@ -21,6 +21,7 @@ class _DynamicHomeWidgetState extends State<DynamicHomeWidget> {
   late HomeWidgets _homeWidgets;
   late Home _home;
   late List<BodyWidget> _bodyWidget;
+  late BottomNavigation _bottomNavigation;
   late TextEditingController _searchText;
 
   @override
@@ -29,6 +30,7 @@ class _DynamicHomeWidgetState extends State<DynamicHomeWidget> {
     _home = widget.homePageData.home!;
     _homeWidgets = widget.homePageData.homeWidgets!;
     _bodyWidget = widget.homePageData.homeWidgets!.bodyWidget!;
+    _bottomNavigation = widget.homePageData.homeWidgets!.bottomNavigation!;
     _searchText = TextEditingController();
   }
 
@@ -70,10 +72,14 @@ class _DynamicHomeWidgetState extends State<DynamicHomeWidget> {
               onChanged: searchFuction,
               widget: bodyWidget,
               contentPadding: EdgeInsets.only(
-                bottom: bodyWidget.bodyWidgetProps!.padding!.bottom!.toDouble(),
-                top: bodyWidget.bodyWidgetProps!.padding!.top!.toDouble(),
-                right: bodyWidget.bodyWidgetProps!.padding!.right!.toDouble(),
-                left: bodyWidget.bodyWidgetProps!.padding!.left!.toDouble(),
+                bottom:
+                    bodyWidget.bodyWidgetProps!.padding!.bottom?.toDouble() ??
+                        0,
+                top: bodyWidget.bodyWidgetProps!.padding!.top?.toDouble() ?? 0,
+                right:
+                    bodyWidget.bodyWidgetProps!.padding!.right?.toDouble() ?? 0,
+                left:
+                    bodyWidget.bodyWidgetProps!.padding!.left?.toDouble() ?? 0,
               ),
             ),
           );
@@ -95,7 +101,9 @@ class _DynamicHomeWidgetState extends State<DynamicHomeWidget> {
           search: _searchText,
         ),
       ),
-      bottomNavigationBar: const CustomBottomNavigationBar(),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        navigation: _bottomNavigation,
+      ),
     );
   }
 }
