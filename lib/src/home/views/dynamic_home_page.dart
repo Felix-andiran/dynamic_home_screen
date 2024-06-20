@@ -63,7 +63,11 @@ class _DynamicHomeViewState extends State<DynamicHomeView> {
                 );
               } else if (state.status == HomeDataStatus.success) {
                 return Center(
-                    child: DynamicHomeWidget(homePageData: homeData!));
+                    child: DynamicHomeWidget(
+                  homePageData: homeData!,
+                  leadingTitle: 'Hi,Ben',
+                  currentLanguage: 'en',
+                ));
               }
               return Center(
                 child: Text(

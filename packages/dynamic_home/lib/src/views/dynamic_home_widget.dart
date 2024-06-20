@@ -1,9 +1,16 @@
 import 'package:dynamic_home/dynamic_home.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class DynamicHomeWidget extends StatefulWidget {
-  const DynamicHomeWidget({super.key, required this.homePageData});
+  const DynamicHomeWidget(
+      {super.key,
+      required this.homePageData,
+      required this.leadingTitle,
+      required this.currentLanguage});
 
+  final String leadingTitle;
+  final String currentLanguage;
   final HomePageData homePageData;
 
   @override
@@ -13,37 +20,80 @@ class DynamicHomeWidget extends StatefulWidget {
 class _DynamicHomeWidgetState extends State<DynamicHomeWidget> {
   late HomeWidgets _homeWidgets;
   late Home _home;
+  late List<BodyWidget> _bodyWidget;
+  late TextEditingController _searchText;
 
   @override
   void initState() {
-    // TODO: implement initState
+    super.initState();
     _home = widget.homePageData.home!;
     _homeWidgets = widget.homePageData.homeWidgets!;
-    super.initState();
+    _bodyWidget = widget.homePageData.homeWidgets!.bodyWidget!;
+    _searchText = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> renderBodyWidgets({
+      List<BodyWidget>? widgets,
+      BuildContext? context,
+      TextEditingController? search,
+    }) {
+      if (widgets == null) return [];
+      return widgets.map((bodyWidget) {
+        final type = bodyWidget.fieldValue;
+        if (type == "favorite_list") {
+          return Positioned(
+            top: bodyWidget.bodyWidgetProps?.position?.top?.toDouble(),
+            bottom: bodyWidget.bodyWidgetProps?.position?.bottom?.toDouble(),
+            child: SizedBox(
+              width: MediaQuery.of(context!).size.width,
+              child: CustomFavoriteSlider(favWidget: bodyWidget),
+            ),
+          );
+        } else if (type == "search_bar") {
+          final hint = bodyWidget.placeHolder
+              ?.firstWhere((x) => x.language == widget.currentLanguage)
+              .value;
+          void searchFuction(value) {
+            if (kDebugMode) {
+              print("Search Value $value");
+            }
+          }
+
+          return Positioned(
+            top: bodyWidget.bodyWidgetProps?.position?.top?.toDouble(),
+            bottom: bodyWidget.bodyWidgetProps?.position?.bottom?.toDouble(),
+            child: CustomSearchBar(
+              controller: search!,
+              hint: hint,
+              onChanged: searchFuction,
+              widget: bodyWidget,
+              contentPadding: EdgeInsets.only(
+                bottom: bodyWidget.bodyWidgetProps!.padding!.bottom!.toDouble(),
+                top: bodyWidget.bodyWidgetProps!.padding!.top!.toDouble(),
+                right: bodyWidget.bodyWidgetProps!.padding!.right!.toDouble(),
+                left: bodyWidget.bodyWidgetProps!.padding!.left!.toDouble(),
+              ),
+            ),
+          );
+        }
+        return Container();
+      }).toList();
+    }
+
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'Hi, Ben',
+        title: widget.leadingTitle,
         appBarWidget: _homeWidgets.appbarWidget!,
       ),
       body: Stack(
         alignment: Alignment.center,
-        children: [
-          Positioned(
-            top: 0,
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: const CustomCarouselSlider(),
-            ),
-          ),
-          const Positioned(
-            bottom: 0,
-            child: CustomSearchBar(),
-          ),
-        ],
+        children: renderBodyWidgets(
+          widgets: _bodyWidget,
+          context: context,
+          search: _searchText,
+        ),
       ),
       bottomNavigationBar: const CustomBottomNavigationBar(),
     );

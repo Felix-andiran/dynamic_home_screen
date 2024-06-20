@@ -14,6 +14,14 @@ IconData getIcon(String input) {
       return Icons.settings;
     case 'account':
       return Icons.account_circle;
+    case 'user':
+      return Icons.person;
+    case 'employees':
+      return Icons.group;
+    case 'address':
+      return Icons.account_tree;
+    case 'roles':
+      return Icons.supervisor_account;
     default:
       return Icons.error;
   }

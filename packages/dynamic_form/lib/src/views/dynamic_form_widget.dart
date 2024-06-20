@@ -70,7 +70,6 @@ class _DynamicFormWidgetState extends State<DynamicFormWidget> {
 
   @override
   Widget build(BuildContext context) {
-    
     if (kDebugMode) {
       // print("Controller fields:");
       // fieldValuesMap.forEach((key, value) {

@@ -13,6 +13,7 @@ class DataCollectionBloc
   })  : _dataCollectionRepository = dataCollectionRepository,
         super(const DataCollectionState()) {
     on<GetJsonFormData>(_onJsonDataRequested);
+    
   }
 
   final DataCollectionRepository _dataCollectionRepository;
